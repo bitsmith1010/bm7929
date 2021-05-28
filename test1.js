@@ -12,14 +12,16 @@ const config = {
       {
         console.log("**** ON HTTP RESPONSE ***", type);
         if (type == "media/subtitles") {
+          console.log("***** ON SUBTITLE REQUEST ****");
+          console.log("***** DATA:", response.body);
           let originalVtt;
           if (player.getPlayerType() == "html5") {
             let data = new DataView(response.body);
             let decoder = new TextDecoder("utf-8");
-            console.log("***** ON SUBTITLE REQUEST ****");
             originalVtt = decoder.decode(data);
           }
           else originalVtt = response.body;
+          console.log("***** DATA STRING:", originalVtt);
 
           let vttProcessed = originalVtt
             .split(/\n([0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3} --> [0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}[^\n]*)\n/)

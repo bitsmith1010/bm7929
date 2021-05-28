@@ -40,10 +40,8 @@ const source = {
       }
     ],
   };
-  player.on(bitmovin.player.PlayerEvent.CueParsed, console.log);
-  player.on(bitmovin.player.PlayerEvent.CueEnter, console.log);
-  player.on(bitmovin.player.PlayerEvent.Seeked, console.log);
-  player.load(source).then(
+player.on(bitmovin.player.PlayerEvent.CueParsed, console.log);
+player.load(source).then(
   function()
   {
     for (ii of player.subtitles.list()) console.log(ii);
